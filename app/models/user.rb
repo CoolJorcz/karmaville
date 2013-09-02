@@ -21,9 +21,9 @@ class User < ActiveRecord::Base
     joins(:karma_points).group('users.id').order('SUM(karma_points.value) DESC')
   end
 
-  # def total_karma
-  #   self.karma_points.sum(:value)
-  # end
+  def total_karma
+    self.karma_points.sum(:value)
+  end
 
   def full_name
     "#{first_name} #{last_name}"
