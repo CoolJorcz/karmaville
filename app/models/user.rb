@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
+  before_save :update_karma
+
   validates :username,
             :presence => true,
             :length => {:minimum => 2, :maximum => 32},
@@ -23,6 +25,11 @@ class User < ActiveRecord::Base
 
   def total_karma
     self.karma_sum
+  end
+
+  def update_karma
+    self.karma_sum += self.karma_points.last
+    user.save
   end
 
   def full_name
