@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def self.page(number)
+    number = 0 if number == nil
     limit(50).offset(number * 50)
   end
 end
