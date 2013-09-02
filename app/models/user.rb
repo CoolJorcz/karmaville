@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :karma_points
 
-  attr_accessible :first_name, :last_name, :email, :username, :total_karma
+  attr_accessible :first_name, :last_name, :email, :username, :karma_sum
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
