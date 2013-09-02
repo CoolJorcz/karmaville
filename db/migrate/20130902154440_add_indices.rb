@@ -5,7 +5,7 @@ class AddIndices < ActiveRecord::Migration
     add_index :users, :username
     add_index :users, :email
 
-    add_index :karma_points, :value
+    add_index :karma_points, [:user_id, :value]
     add_index :karma_points, :label
   end
 end
