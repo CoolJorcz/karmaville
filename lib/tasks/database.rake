@@ -1,14 +1,11 @@
 namespace :db do
   desc "calculate user karma points"
   task :karma => :environment do
-    #ruby code
-  User.transaction do
-    User.all.each do |user|
-      user.karma_points.sum(:value)
-    end
+      User.all.each do |user|
+        user.total_karma = KarmaPoint.where(user_id: user.id).pluck(:value).reduce(:+)
+        user.save
+      end
   end
 end
-end
 
-#Get all users, 
-#FROM 'karma_points' WHERE 'karma_points'.'user_id' = #{user.id}
+
