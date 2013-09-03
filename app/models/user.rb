@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :karma_points
-  scope :page, ->(number) { number ||= 0;
-                           limit(100).offset(number * 100) }
+  scope :page, ->(number=0) { limit(100).offset(number * 100) }
 
   attr_accessible :first_name, :last_name, :email, :username, :karma_sum
 
