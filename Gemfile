@@ -22,6 +22,10 @@ group :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'launchy'
+  gem 'capybara'
 end
 
 group :assets do

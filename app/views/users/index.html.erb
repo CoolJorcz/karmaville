@@ -10,3 +10,35 @@
     <%= render 'user_row', :user => user %>
   <% end %>
 </table>
+
+<div class="pagination">
+  <ul>
+    <% if @number > 1 %>
+      <li><a href="/?page=<%= @number - 1 %>">Prev</a></li>
+    <% end %>
+
+    <% unless @number >= @last_page %>
+      <li><a class="active" href="/?page=<%= @number %>"><%= @number %></a></li>
+    <% end %>
+
+    <% unless @number >= @last_page - 1  %>
+      <li><a href="/?page=<%= @number + 1 %>"><%= @number + 1 %></a></li>
+    <% end %>
+
+    <% unless @number >= @last_page - 2  %>
+      <li><a href="/?page=<%= @number + 2 %>"><%= @number + 2 %></a></li>
+    <% end %>
+
+    <% unless @number >= @last_page - 3  %>
+      <li><a href="/?page=<%= @number + 3 %>"><%= @number + 3 %></a></li>
+    <% end %>
+    
+    <% unless @number >= @last_page - 4  %>
+      <li><a href="/?page=<%= @number + 4 %>"><%= @number + 4 %></a></li>
+    <% end %>
+    
+    <% unless @number >= @last_page - 1  %>
+      <li><a href="/?page=<%= @number + 1 %>">Next</a></li>
+    <% end %>
+  </ul>
+</div>

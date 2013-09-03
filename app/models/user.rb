@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
-  before_save :update_karma
+  after_save :update_karma
 
   validates :username,
             :presence => true,
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def update_karma
-    self.karma_sum += self.karma_points.last
+    self.karma_sum = self.karma_sum + self.karma_points.last
     user.save
   end
 
@@ -38,6 +38,6 @@ class User < ActiveRecord::Base
 
   def self.page(number)
     number = 0 if number == nil
-    limit(50).offset(number * 50)
+    limit(100).offset(number * 100) 
   end
 end

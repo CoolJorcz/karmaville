@@ -48,4 +48,11 @@ describe User do
       user.full_name.should eq 'John Doe'
     end
   end
+
+
+   describe '.page' do
+    it 'should return the correct page number' do
+      expect{ User.by_karma.page(nil).should eql User.by_karma.page(0) }
+    end
+  end
 end
